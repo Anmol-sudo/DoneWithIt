@@ -9,16 +9,17 @@ function ListItem({
   title,
   subTitle,
   image,
-  ImageComponent,
+  IconComponent,
   onPress,
   renderRightActions,
+  style
 }) {
   return (
     <GestureHandlerRootView>
       <Swipeable renderRightActions={renderRightActions}>
         <TouchableHighlight underlayColor={colors.light} onPress={onPress}>
-          <View style={styles.container}>
-            {ImageComponent}
+          <View style={[styles.container, style]}>
+            {IconComponent}
             {image && <Image style={styles.image} source={image} />}
             <View style={styles.detailsContainer}>
               <AppText style={styles.title}>{title}</AppText>
@@ -37,6 +38,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     padding: 15,
+    backgroundColor: colors.white
   },
   detailsContainer: {
     marginLeft: 10,
