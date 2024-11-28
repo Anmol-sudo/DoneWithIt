@@ -1,21 +1,29 @@
 import React from "react";
-import {StyleSheet, TextInput, View } from "react-native";
+import { View, TextInput, StyleSheet, Dimensions } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import defaultStyles from "../config/styles";
 
-import defaultStyles from "../config/styles"
+// Get the current window width
+// This is a crucial step for creating responsive designs
+const { width: screenWidth } = Dimensions.get("window");
 
-function AppTextInput({ icon, ...otherProps }) {
+function AppTextInput({ icon, width = "100%", ...otherProps }) {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { width }]}>
       {icon && (
-        <MaterialCommunityIcons
-          name={icon}
-          size={26}
-          color={defaultStyles.colors.medium}
-          style={styles.icon}
-        />
+        <View style={styles.iconContainer}>
+          <MaterialCommunityIcons
+            name={icon}
+            size={20}
+            color={defaultStyles.colors.medium}
+          />
+        </View>
       )}
-      <TextInput style={defaultStyles.text} {...otherProps} />
+      <TextInput
+        placeholderTextColor={defaultStyles.colors.medium}
+        style={[defaultStyles.text, styles.textInput]}
+        {...otherProps}
+      />
     </View>
   );
 }
@@ -23,17 +31,23 @@ function AppTextInput({ icon, ...otherProps }) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: defaultStyles.colors.light,
-    borderRadius: 25,
+    borderRadius: 15,
     flexDirection: "row",
-    width: "100%",
-    padding: 15,
+    padding: 10,
     marginVertical: 10,
+    alignItems: "center",
   },
-  icon:{
+  iconContainer: {
+    // Calculate width dynamically based on screen width
+    // This creates a proportional width that adapts to different device sizes
+    width: screenWidth * 0.08, // 8% of screen width
     marginRight: 10,
-    verticalAlign: "middle"
+    alignItems: "center",
+    justifyContent: "center",
   },
-  
+  textInput: {
+    flex: 1,
+  },
 });
 
 export default AppTextInput;
