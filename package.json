@@ -13,6 +13,7 @@
     "@react-native-community/hooks": "^3.0.0",
     "expo": "~52.0.10",
     "expo-constants": "^17.0.3",
+    "expo-image-picker": "~16.0.3",
     "expo-status-bar": "~2.0.0",
     "formik": "^2.1.4",
     "react": "18.3.1",
