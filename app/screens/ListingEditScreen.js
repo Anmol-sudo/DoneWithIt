@@ -126,10 +126,9 @@ function ListingEditScreen() {
           width="50%"
         />
         <AppFormField
+          multiple={true}
           maxLength={255}
-          multiline
           name="description"
-          numberOfLines={3}
           placeholder="Description"
         />
         <SubmitButton title="Post" />

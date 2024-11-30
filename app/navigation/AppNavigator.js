@@ -3,27 +3,27 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import ListingEditScreen from "../screens/ListingEditScreen";
-import ListingsScreen from "../screens/ListingsScreen";
 import AccountScreen from "../screens/AccountScreen";
 import { SafeAreaView } from "react-native";
+import FeedNavigator from "./FeedNavigator";
+import colors from "../config/colors";
 
 const Tab = createBottomTabNavigator();
 
 const AppNavigator = () => {
-
-
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Tab.Navigator
         screenOptions={{
-          tabBarActiveTintColor: "tomato",
-          tabBarInactiveTintColor: "gray",
+          headerTintColor: colors.primary,
+          headerTitleStyle: { color: colors.primary },
         }}
       >
         <Tab.Screen
-          name="Listings"
-          component={ListingsScreen}
+          name="Feed"
+          component={FeedNavigator}
           options={{
+            headerShown: false,
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="home" color={color} size={size} />
             ),

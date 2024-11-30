@@ -7,7 +7,7 @@ import defaultStyles from "../config/styles";
 // This is a crucial step for creating responsive designs
 const { width: screenWidth } = Dimensions.get("window");
 
-function AppTextInput({ icon, width = "100%", ...otherProps }) {
+function AppTextInput({ icon, width = "100%", multiple=false, ...otherProps }) {
   return (
     <View style={[styles.container, { width }]}>
       {icon && (
@@ -20,8 +20,10 @@ function AppTextInput({ icon, width = "100%", ...otherProps }) {
         </View>
       )}
       <TextInput
+        multiline={multiple}
+        numberOfLines={multiple? +10 : 1}
         placeholderTextColor={defaultStyles.colors.medium}
-        style={[defaultStyles.text, styles.textInput]}
+        style={[defaultStyles.text, styles.textInput, multiple && styles.multiText ]}
         {...otherProps}
       />
     </View>
@@ -48,6 +50,10 @@ const styles = StyleSheet.create({
   textInput: {
     flex: 1,
   },
+  multiText: {
+    textAlignVertical: "top",
+    height: 200
+  }
 });
 
 export default AppTextInput;

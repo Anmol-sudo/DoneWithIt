@@ -1,17 +1,17 @@
 import React from "react";
-import { Image, View, StyleSheet } from "react-native";
+import { ScrollView, Image, View, StyleSheet } from "react-native";
+import ListItem from "../components/ListItem";
 import AppText from "../components/AppText";
 
-import ListItem from "../components/ListItem";
-import colors from "../config/colors";
+function ListingDetailsScreen({route}) {
+  const listing = route.params;
 
-function ListingDetailsScreen(props) {
   return (
-    <View>
-      <Image style={styles.image} source={require("../assets/jacket.jpg")} />
+    <ScrollView>
+      <Image style={styles.image} source={listing.image} />
       <View style={styles.detailsContainer}>
-        <AppText style={styles.title}>Red jacket for sale</AppText>
-        <AppText style={styles.price}>$100</AppText>
+        <AppText style={styles.title}>{listing.title}</AppText>
+        <AppText style={styles.price}>${listing.price}</AppText>
         <View style={styles.userContainer}>
           <ListItem
             image={require("../assets/user.jpg")}
@@ -20,27 +20,27 @@ function ListingDetailsScreen(props) {
           />
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  detailsContainer: {
-    padding: 20,
-  },
   image: {
     width: "100%",
     height: 300,
   },
-  price: {
-    color: colors.secondary,
-    fontWeight: "bold",
-    fontSize: 20,
-    marginVertical: 10,
+  detailsContainer: {
+    padding: 20,
   },
   title: {
     fontSize: 24,
     fontWeight: "500",
+  },
+  price: {
+    color: "green",
+    fontWeight: "bold",
+    fontSize: 20,
+    marginVertical: 10,
   },
   userContainer: {
     marginVertical: 40,
