@@ -78,7 +78,8 @@ const categories = [
   },
 ];
 
-function ListingEditScreen() {
+function ListingEditScreen() { 
+  
   const [location, setLocation] = useState()
 
   const getLocation = async () => {
