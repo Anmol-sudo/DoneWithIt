@@ -6,6 +6,7 @@ import ListItemSeparatorComponent from "../components/ListItemSeparator";
 import colors from "../config/colors";
 import Icon from "../components/Icon";
 import Screen from "../components/Screen";
+import routes from "../navigation/routes";
 
 const menuItems = [
   {
@@ -53,7 +54,7 @@ function AccountScreen({ navigation }) {
                   backgroundColor={item.icon.backgroundColor}
                 />
               }
-              onPress={() => navigation.navigate(item.targetScreen)}
+              onPress={() => navigation.navigate(routes.MESSAGES)}
             />
           )}
         />

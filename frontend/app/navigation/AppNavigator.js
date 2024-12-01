@@ -8,6 +8,7 @@ import FeedNavigator from "./FeedNavigator";
 import colors from "../config/colors";
 import AccountNavigator from "./AccountNavigator";
 import NewListingButton from "./NewListingButton";
+import routes from "./routes";
 
 const Tab = createBottomTabNavigator();
 
@@ -34,7 +35,7 @@ const AppNavigator = () => {
           name="ListingEdit"
           component={ListingEditScreen}
           options={({navigation, route}) => ({
-            tabBarButton: () => <NewListingButton onPress={() => navigation.navigate("ListingEdit")} />,
+            tabBarButton: () => <NewListingButton onPress={() => navigation.navigate(routes.LISTING_EDIT)} />,
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons
                 name="plus-circle"
