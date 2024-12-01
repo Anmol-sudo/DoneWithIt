@@ -7,6 +7,7 @@ import { SafeAreaView } from "react-native";
 import FeedNavigator from "./FeedNavigator";
 import colors from "../config/colors";
 import AccountNavigator from "./AccountNavigator";
+import NewListingButton from "./NewListingButton";
 
 const Tab = createBottomTabNavigator();
 
@@ -32,7 +33,8 @@ const AppNavigator = () => {
         <Tab.Screen
           name="ListingEdit"
           component={ListingEditScreen}
-          options={{
+          options={({navigation, route}) => ({
+            tabBarButton: () => <NewListingButton onPress={() => navigation.navigate("ListingEdit")} />,
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons
                 name="plus-circle"
@@ -40,7 +42,7 @@ const AppNavigator = () => {
                 size={size}
               />
             ),
-          }}
+          })}
         />
         <Tab.Screen
           name="Account"
