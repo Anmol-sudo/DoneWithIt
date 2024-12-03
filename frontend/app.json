@@ -2,6 +2,14 @@
   "expo": {
     "name": "DoneWithIt",
     "slug": "DoneWithIt",
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+        }
+      ]
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./app/assets/icon.png",
